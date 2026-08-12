@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { getJewelryProducts } from "../services/api";
 import "../styles/Products.css";
+import { Link } from "react-router-dom";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -29,29 +30,35 @@ function Products() {
         <h1 className="products-title">Our Jewelry</h1>
 
      
-          <div className="products-grid">
-            {products.map((product) => (
-           <div className="product-card" key={product.id}>
-  <div className="product-image-box">
-    <img
-      src={product.image}
-      alt={product.title}
-      className="product-image"
-    />
-  </div>
+        <div className="products-grid">
+  {products.map((product) => (
+    <Link
+      to={`/products/${product.id}`}
+      key={product.id}
+      className="product-link"
+    >
+      <div className="product-card">
+        <div className="product-image-box">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="product-image"
+          />
+        </div>
 
-  <div className="product-info">
-    <h2>{product.title}</h2>
+        <div className="product-info">
+          <h2>{product.title}</h2>
 
-    <p>${product.price}</p>
+          <p>${product.price}</p>
 
-    <button type="button">
-      Add to Cart
-    </button>
-  </div>
+          <button type="button" className="add-to-cart-button">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </Link>
+  ))}
 </div>
-            ))}
-          </div>
         
       </main>
 

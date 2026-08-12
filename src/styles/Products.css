@@ -66,17 +66,3 @@
   color: var(--color-primary);
 }
 
-.product-info button {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid var(--color-primary);
-  background: transparent;
-  color: var(--color-primary);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.product-info button:hover {
-  background-color: var(--color-primary);
-  color: white;
-}
