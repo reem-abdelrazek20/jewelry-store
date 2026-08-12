@@ -41,3 +41,44 @@
   background: white;
   color: black;
 }
+
+.about {
+  padding: 80px 60px;
+}
+
+.about-header h3 {
+  font-size: 35px;
+  font-family: serif;
+}
+.about-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-header p {
+  color: #777;
+}
+
+.jewelry-categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.card h4 {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.card p {
+  color: #777;
+  font-size: 14px;
+}

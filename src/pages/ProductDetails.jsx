@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/api";
 import { CiStar } from "react-icons/ci";
-
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -28,6 +29,8 @@ function ProductDetails() {
   }
 
   return (
+    <>
+    <Navbar />
     <div className="min-h-screen bg-[#faf8f5] flex items-center justify-center px-6 py-12">
 
       <div className="w-full max-w-5xl bg-white rounded-2xl shadow-lg p-8 grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -81,6 +84,8 @@ function ProductDetails() {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
 
