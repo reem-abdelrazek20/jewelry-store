@@ -1,0 +1,43 @@
+.home {
+  background-image: url("/home.jpg");
+  background-size: cover;
+  background-position: 50% 20%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative;
+}
+
+
+
+
+
+.hero-content {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 55px;
+  font-family: serif;
+    font-weight: 400;
+}
+
+
+.hero-content button {
+  margin-top: 20px;
+  padding: 10px 40px;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.hero-content button:hover {
+  background: white;
+  color: black;
+}

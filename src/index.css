@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #a58261;
+  --color-secondary: #d8c5b5;
+  --color-background: #faf8f5;
+  --color-text: #2f2f2f;
+  --color-muted: #6b6b6b;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  transition: color 0.3s ease;
+}
+
+a:hover{
+  color: var(--color-primary);
+}
+

@@ -1,0 +1,162 @@
+.auth-form {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+}
+
+/* Welcome */
+.welcome {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Inputs */
+form input {
+  width: 100%;
+}
+
+form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+form input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px var(--color-secondary);
+  outline: none;
+}
+
+/* Submit Button */
+form .submit {
+  width: 100%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+form .submit:hover {
+  border-color: #2575fc;
+  box-shadow: 0 0 5px rgba(37, 117, 252, 0.3);
+  cursor: pointer;
+}
+
+
+
+
+/* Divider */
+.auth-form .divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.auth-form .divider span {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.auth-form .divider span:nth-child(2) {
+  flex: 0;
+  height: auto;
+  background: none;
+  font-size: 14px;
+  color: #888;
+}
+
+/* Gmail Button */
+.Gmail {
+  width: 100%;
+  background-color: transparent;
+  color: black;
+  transition: 0.3s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  font-size: 14px;
+}
+
+.Gmail:hover {
+  background-color: #f2f2f2;
+  color: #2575fc;
+  border: 1px solid #2575fc;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Error */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: -11px;
+  margin-bottom: -10px;
+}
+
+/* Password Container */
+.password-box {
+  position: relative;
+  width: 100%;
+}
+
+/* Password Input */
+.password-box input {
+  width: 100%;
+  padding-right: 45px;
+}
+
+/* Eye Button */
+.eye-btn {
+  width: auto;
+
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  border: none;
+  background: transparent;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #777;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.eye-btn:hover {
+  color: #2575fc;
+}
