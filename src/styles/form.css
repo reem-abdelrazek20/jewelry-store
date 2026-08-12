@@ -158,5 +158,5 @@ form .submit:hover {
 }
 
 .eye-btn:hover {
-  color: #2575fc;
+  color: var(--color-primary);
 }

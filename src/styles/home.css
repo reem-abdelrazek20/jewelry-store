@@ -1,31 +1,36 @@
 .home {
   background-image: url("/home.jpg");
   background-size: cover;
-  background-position: 50% 20%;
+  background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-
-
-
 .hero-content {
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   color: white;
+  width: 90%;
+  max-width: 800px;
+  padding: 20px;
 }
 
 .hero-content h1 {
-  font-size: 55px;
+  font-size: clamp(35px, 5vw, 55px);
   font-family: serif;
-    font-weight: 400;
+  font-weight: 400;
+  margin-bottom: 15px;
 }
 
+.hero-content p {
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 600px;
+}
 
 .hero-content button {
   margin-top: 20px;
@@ -34,7 +39,7 @@
   color: white;
   border: 1px solid white;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .hero-content button:hover {
@@ -42,22 +47,31 @@
   color: black;
 }
 
+/* About */
+
 .about {
   padding: 80px 60px;
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
 }
 
 .about-header h3 {
   font-size: 35px;
   font-family: serif;
-}
-.about-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .about-header p {
   color: #777;
+}
+
+.about-header button {
+  flex-shrink: 0;
 }
 
 .jewelry-categories {
@@ -67,10 +81,15 @@
   margin-top: 40px;
 }
 
+.card {
+  min-width: 0;
+}
+
 .card img {
   width: 100%;
   height: 250px;
   object-fit: cover;
+  display: block;
 }
 
 .card h4 {
@@ -81,4 +100,113 @@
 .card p {
   color: #777;
   font-size: 14px;
+  line-height: 1.5;
+}
+
+
+/* Tablet */
+
+@media (max-width: 992px) {
+  .home {
+    min-height: 80vh;
+    background-position: center;
+  }
+
+  .about {
+    padding: 60px 35px;
+  }
+
+  .jewelry-categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card img {
+    height: 280px;
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .home {
+    min-height: 75vh;
+    background-position: center;
+  }
+
+  .hero-content {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 38px;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+  }
+
+  .hero-content button {
+    padding: 10px 30px;
+  }
+
+  .about {
+    padding: 50px 20px;
+  }
+
+  .about-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-header h3 {
+    font-size: 30px;
+  }
+
+  .about-header button {
+    width: 100%;
+  }
+
+  .jewelry-categories {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .card img {
+    height: 300px;
+  }
+}
+
+
+/* Small Mobile */
+
+@media (max-width: 480px) {
+  .home {
+    min-height: 70vh;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .hero-content button {
+    padding: 10px 25px;
+  }
+
+  .about {
+    padding: 40px 15px;
+  }
+
+  .about-header h3 {
+    font-size: 27px;
+  }
+
+  .card img {
+    height: 250px;
+  }
 }
