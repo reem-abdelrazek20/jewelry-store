@@ -72,33 +72,7 @@ function Cart() {
                 </p>
 
                 {/* Quantity */}
-                <div className="flex items-center justify-center md:justify-start gap-4">
-                  <button
-                    className="w-9 h-9 rounded-full border
-                             border-[#b08d57]
-                             text-[#b08d57]
-                             hover:bg-[#b08d57]
-                             hover:text-white
-                             transition"
-                  >
-                    −
-                  </button>
-
-                  <span className="font-medium text-gray-700">
-                    {product.quantity}
-                  </span>
-
-                  <button
-                    className="w-9 h-9 rounded-full border
-                             border-[#b08d57]
-                             text-[#b08d57]
-                             hover:bg-[#b08d57]
-                             hover:text-white
-                             transition"
-                  >
-                    +
-                  </button>
-                </div>
+               
               </div>
 
               {/* Product Total */}
