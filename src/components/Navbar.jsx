@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingBag, FaSearch, FaUser } from "react-icons/fa";
 import logo from "../assets/logo.svg";
+import Cart from "../pages/cart";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

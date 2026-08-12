@@ -6,7 +6,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
 import Signup from "./pages/signup";
 import Register from "./pages/Register";
-import Cart from "./pages/cart";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
