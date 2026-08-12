@@ -57,9 +57,7 @@ function Navbar() {
             <FaShoppingBag />
           </Link>
 
-          <Link to="/search">
-            <FaSearch />
-          </Link>
+        
           {user ? (
   <div className="relative">
     <button
