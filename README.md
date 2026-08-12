@@ -1,16 +1,42 @@
-# React + Vite
+#  Jewelry Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive jewelry e-commerce website built with **React.js**.
+The project displays jewelry products fetched from the **Fake Store API** and provides a clean and user-friendly shopping experience.
 
-Currently, two official plugins are available:
+##  Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* 🏠 Modern and responsive user interface
+* 💎 Display jewelry products dynamically
+* 🔌 Fetch products from Fake Store API
+* ⏳ Loading state while fetching products
+* ⚠️ Error handling for API requests
+* 📱 Responsive design for different screen sizes
+* 🧩 Reusable React components
 
-## React Compiler
+##  Technologies
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React.js
+* JavaScript (ES6+)
+* HTML5
+* CSS3
+* React Hooks
 
-## Expanding the ESLint configuration
+  * `useState`
+  * `useEffect`
+* Fetch API
+* Fake Store API
+* Vite
+* Git & GitHub
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+##  API
+
+This project uses the **Fake Store API** to retrieve jewelry products.
+
+Products endpoint:
+
+`https://fakestoreapi.com/products/category/jewelery`
+
+
+
+
+
