@@ -4,6 +4,7 @@ import { getProductById } from "../services/api";
 import { CiStar } from "react-icons/ci";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Cart from "../pages/Cart"
 
 function ProductDetails() {
   const { id } = useParams();

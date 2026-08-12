@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaShoppingBag, FaSearch, FaUser } from "react-icons/fa";
 import logo from "../assets/logo.svg";
 import Cart from "../pages/cart";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   return (
     <div>
