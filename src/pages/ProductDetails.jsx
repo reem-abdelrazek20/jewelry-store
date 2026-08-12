@@ -9,6 +9,50 @@ function ProductDetails() {
   const { id } = useParams();
 
   const [product, setProduct] = useState(null);
+ 
+
+  const handleAddToCart = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (!user) {
+    alert("Please login first");
+    return;
+  }
+
+  const cartKey = `cart_${user.id}`;
+
+  const oldCart =
+    JSON.parse(localStorage.getItem(cartKey)) || [];
+
+  const existingProduct = oldCart.find(
+    (item) => item.id === product.id
+  );
+
+  let updatedCart;
+
+  if (existingProduct) {
+    updatedCart = oldCart.map((item) =>
+      item.id === product.id
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    );
+  } else {
+    updatedCart = [
+      ...oldCart,
+      {
+        ...product,
+        quantity: 1,
+      },
+    ];
+  }
+
+  localStorage.setItem(
+    cartKey,
+    JSON.stringify(updatedCart)
+  );
+
+ 
+};
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -77,7 +121,7 @@ function ProductDetails() {
             </span>
           </div>
 
-          <button className="add-to-cart-button">
+          <button className="add-to-cart-button" onClick={handleAddToCart}>
             Add to Cart
           </button>
 

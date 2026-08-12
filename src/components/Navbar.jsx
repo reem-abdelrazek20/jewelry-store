@@ -51,7 +51,7 @@ function Navbar() {
 
         {/* Icons */}
         <div className="flex items-center gap-6 text-xl">
-          <Link to="/cart">
+          <Link to="/Cart">
             <FaShoppingBag />
           </Link>
 
