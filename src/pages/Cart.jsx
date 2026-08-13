@@ -19,6 +19,30 @@ function Cart() {
     setCart(savedCart);
   }, []);
 
+  const updateQuantity = (productId, change) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) return;
+
+    const cartKey = `cart_${user.id}`;
+
+    const savedCart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+    const newCart = savedCart.map((item) => {
+      if (item.id === productId) {
+        return {
+          ...item,
+          quantity: Math.max(1, (item.quantity || 1) + change),
+        };
+      }
+
+      return item;
+    });
+
+    localStorage.setItem(cartKey, JSON.stringify(newCart));
+
+    setCart(newCart);
+  };
   return (
     <div className="min-h-screen bg-[#faf8f5]">
       <Navbar />
@@ -70,9 +94,6 @@ function Cart() {
                 <p className="text-xl font-bold text-[#b08d57] mb-4">
                   ${product.price}
                 </p>
-
-                {/* Quantity */}
-               
               </div>
 
               {/* Product Total */}
@@ -82,10 +103,62 @@ function Cart() {
                 <p className="text-xl font-semibold text-gray-800">
                   ${(product.price * product.quantity).toFixed(2)}
                 </p>
+                <div className="flex items-center justify-center md:justify-start gap-3 mt-4">
+                  <button
+                    onClick={() => updateQuantity(product.id, -1)}
+                    className="
+      w-8 h-8
+      rounded-full
+      border border-gray-300
+      flex items-center justify-center
+      hover:bg-gray-100
+      transition
+    "
+                  >
+                    −
+                  </button>
+
+                  <span className="w-8 text-center font-medium">
+                    {product.quantity || 1}
+                  </span>
+
+                  <button
+                    onClick={() => updateQuantity(product.id, 1)}
+                    className="
+      w-8 h-8
+      rounded-full
+      border border-gray-300
+      flex items-center justify-center
+      hover:bg-gray-100
+      transition
+    "
+                  >
+                    +
+                  </button>
+                </div>
 
                 <button
-                  className="mt-4 text-sm text-red-400
-                           hover:text-red-600 transition"
+                  onClick={() => {
+                    const user = JSON.parse(localStorage.getItem("user"));
+
+                    if (!user) return;
+
+                    const cartKey = `cart_${user.id}`;
+
+                    const savedCart =
+                      JSON.parse(localStorage.getItem(cartKey)) || [];
+
+                    const newCart = savedCart.filter(
+                      (item) => item.id !== product.id,
+                    );
+
+                    localStorage.setItem(cartKey, JSON.stringify(newCart));
+
+                    setCart(newCart);
+
+                    window.dispatchEvent(new Event("cartUpdated"));
+                  }}
+                  className="mt-4 text-sm text-red-400 hover:text-red-600 transition"
                 >
                   Remove
                 </button>
@@ -104,7 +177,12 @@ function Cart() {
             <div className="flex justify-between mb-3 text-gray-600">
               <span>Items</span>
 
-              <span>{cart.length}</span>
+              <span>
+                {cart.reduce(
+                  (total, product) => total + (product.quantity || 1),
+                  0,
+                )}
+              </span>
             </div>
 
             <div className="border-t border-gray-200 pt-4 mt-4 flex justify-between">

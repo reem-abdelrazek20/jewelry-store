@@ -22,6 +22,9 @@ function Navbar() {
     setMenuOpen(false);
   };
 
+
+
+
   return (
     <div>
       {/* Top Bar */}
