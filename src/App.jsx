@@ -10,7 +10,7 @@ import Cart from "./pages/Cart.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
@@ -21,7 +21,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
        
       </Routes>
-    </BrowserRouter>
+    </HashRouter >
   );
 }
 
