@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaShoppingBag,
@@ -11,19 +10,9 @@ import logo from "../assets/logo.svg";
 import Cart from "../pages/Cart.jsx";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("user"));
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
-
-
 
   return (
     <div>
@@ -36,10 +25,9 @@ function Navbar() {
 
       {/* Navbar */}
       <header className="relative flex items-center justify-between px-4 sm:px-6 lg:px-10 py-2 bg-white shadow-sm">
-        
         {/* Logo */}
         <div className="shrink-0">
-          <Link to="/" onClick={closeMenu}>
+          <Link to="/">
             <img
               src={logo}
               alt="Logo"
@@ -52,46 +40,31 @@ function Navbar() {
         <nav className="hidden lg:block">
           <ul className="flex items-center gap-6 xl:gap-8 text-sm font-medium uppercase tracking-wider">
             <li>
-              <Link
-                to="/"
-                className="hover:text-gray-500 transition"
-              >
+              <Link to="/" className="hover:text-gray-500 transition">
                 Home
               </Link>
             </li>
 
             <li>
-              <Link
-                to="/products"
-                className="hover:text-gray-500 transition"
-              >
+              <Link to="/products" className="hover:text-gray-500 transition">
                 Shop
               </Link>
             </li>
 
             <li>
-              <Link
-                to="/products"
-                className="hover:text-gray-500 transition"
-              >
+              <Link to="/products" className="hover:text-gray-500 transition">
                 Collections
               </Link>
             </li>
 
             <li>
-              <Link
-                to="/about"
-                className="hover:text-gray-500 transition"
-              >
+              <Link to="/about" className="hover:text-gray-500 transition">
                 About
               </Link>
             </li>
 
             <li>
-              <Link
-                to="/contact"
-                className="hover:text-gray-500 transition"
-              >
+              <Link to="/contact" className="hover:text-gray-500 transition">
                 Contact
               </Link>
             </li>
@@ -100,12 +73,8 @@ function Navbar() {
 
         {/* Icons */}
         <div className="flex items-center gap-4 sm:gap-5 text-lg sm:text-xl">
-
           {/* Cart */}
-          <Link
-            to="/cart"
-            className="hover:text-gray-500 transition"
-          >
+          <Link to="/cart" className="hover:text-gray-500 transition">
             <FaShoppingBag />
           </Link>
 
@@ -114,8 +83,9 @@ function Navbar() {
             <div className="relative hidden sm:block">
               <button
                 type="button"
-                onClick={() => setIsOpen(!isOpen)}
                 className="flex items-center"
+                popoverTarget="menu"
+                aria-label="Open menu"
               >
                 <img
                   src="/jewellery.png"
@@ -124,39 +94,39 @@ function Navbar() {
                 />
               </button>
 
-              {isOpen && (
-                <div className="absolute right-0 top-12 z-50 w-48 rounded-lg border border-gray-200 bg-white p-2 shadow-lg">
+              <div
+                id="menu"
+                popover="auto"
+                className="absolute inset-auto [position-area:bottom] z-50 w-48 rounded-lg border border-gray-200 bg-white p-2 shadow-lg"
+              >
+                <Link
+                  to="/Cart"
+                  className="block px-4 py-2 text-sm hover:bg-gray-100"
+                
+                >
+                  My Orders
+                </Link>
 
-                  <Link
-                    to="/Cart"
-                    className="block px-4 py-2 text-sm hover:bg-gray-100"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    My Orders
-                  </Link>
+                <Link
+                  to="/wishlist"
+                  className="block px-4 py-2 text-sm hover:bg-gray-100"
+          
+                >
+                  Wishlist
+                </Link>
 
-                  <Link
-                    to="/wishlist"
-                    className="block px-4 py-2 text-sm hover:bg-gray-100"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Wishlist
-                  </Link>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      localStorage.removeItem("user");
-                      setIsOpen(false);
-                      navigate("/login");
-                    }}
-                    className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100"
-                  >
-                    Logout
-                  </button>
-
-                </div>
-              )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    localStorage.removeItem("user");
+                  
+                    navigate("/login");
+                  }}
+                  className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100"
+                >
+                  Logout
+                </button>
+              </div>
             </div>
           ) : (
             <Link
@@ -169,124 +139,84 @@ function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
+            popoverTarget="Mobilemenu"
             type="button"
-            onClick={() => setMenuOpen(!menuOpen)}
             className="lg:hidden text-xl"
+            aria-label="Open menu"
           >
-            {menuOpen ? <FaTimes /> : <FaBars />}
+            <FaBars />
           </button>
         </div>
 
         {/* Mobile Menu */}
-        {menuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white shadow-lg z-40 lg:hidden">
 
-            <nav className="px-6 py-5">
-              <ul className="flex flex-col gap-5 text-sm font-medium uppercase tracking-wider">
+        <div id="Mobilemenu" popover="auto" className=" inset-auto [position-area:bottom] z-50 w-48 rounded-lg border border-gray-200 bg-white p-2 shadow-lg">
+          <nav className="px-6 py-5">
+            <ul className="flex flex-col gap-5 text-sm font-medium uppercase tracking-wider">
+              <li>
+                <Link to="/" className="block hover:text-gray-500">
+                  Home
+                </Link>
+              </li>
 
-                <li>
-                  <Link
-                    to="/"
-                    onClick={closeMenu}
-                    className="block hover:text-gray-500"
-                  >
-                    Home
-                  </Link>
-                </li>
+              <li>
+                <Link to="/products" className="block hover:text-gray-500">
+                  Shop
+                </Link>
+              </li>
 
-                <li>
-                  <Link
-                    to="/products"
-                    onClick={closeMenu}
-                    className="block hover:text-gray-500"
-                  >
-                    Shop
-                  </Link>
-                </li>
+              <li>
+                <Link to="/products" className="block hover:text-gray-500">
+                  Collections
+                </Link>
+              </li>
 
-                <li>
-                  <Link
-                    to="/products"
-                    onClick={closeMenu}
-                    className="block hover:text-gray-500"
-                  >
-                    Collections
-                  </Link>
-                </li>
+              <li>
+                <Link to="/about" className="block hover:text-gray-500">
+                  About
+                </Link>
+              </li>
 
-                <li>
-                  <Link
-                    to="/about"
-                    onClick={closeMenu}
-                    className="block hover:text-gray-500"
-                  >
-                    About
-                  </Link>
-                </li>
+              <li>
+                <Link to="/contact" className="block hover:text-gray-500">
+                  Contact
+                </Link>
+              </li>
 
-                <li>
-                  <Link
-                    to="/contact"
-                    onClick={closeMenu}
-                    className="block hover:text-gray-500"
-                  >
-                    Contact
-                  </Link>
-                </li>
-
-                {/* Mobile User */}
-                <li className="border-t pt-4">
-
-                  {user ? (
-                    <div className="flex flex-col gap-4">
-
-                      <Link
-                        to="/Cart"
-                        onClick={closeMenu}
-                        className="hover:text-gray-500"
-                      >
-                        My Orders
-                      </Link>
-
-                      <Link
-                        to="/wishlist"
-                        onClick={closeMenu}
-                        className="hover:text-gray-500"
-                      >
-                        Wishlist
-                      </Link>
-
-                      <button
-                        type="button"
-                        onClick={() => {
-                          localStorage.removeItem("user");
-                          closeMenu();
-                          navigate("/login");
-                        }}
-                        className="text-left hover:text-gray-500"
-                      >
-                        Logout
-                      </button>
-
-                    </div>
-                  ) : (
-                    <Link
-                      to="/login"
-                      onClick={closeMenu}
-                      className="flex items-center gap-2"
-                    >
-                      <FaUser />
-                      Login
+              {/* Mobile User */}
+              <li className="border-t pt-4">
+                {user ? (
+                  <div className="flex flex-col gap-4">
+                    <Link to="/Cart" className="hover:text-gray-500">
+                      My Orders
                     </Link>
-                  )}
 
-                </li>
+                    <Link to="/wishlist" className="hover:text-gray-500">
+                      Wishlist
+                    </Link>
 
-              </ul>
-            </nav>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        localStorage.removeItem("user");
 
-          </div>
-        )}
+                        navigate("/login");
+                      }}
+                      className="text-left hover:text-gray-500"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : (
+                  <Link to="/login" className="flex items-center gap-2">
+                    <FaUser />
+                    Login
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </nav>
+        </div>
       </header>
     </div>
   );
